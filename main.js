@@ -30,7 +30,7 @@ const TODO_LIST = "todoList";
 let allItems = [];
 
 //show items
-let renderItems = (items, tabName) => {
+renderItems = (items, tabName) => {
   todoOutput.innerHTML = "";
   doneOutput.innerHTML = "";
   for (let i = 0; i < items.length; i++) {
@@ -39,7 +39,7 @@ let renderItems = (items, tabName) => {
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
       <label>${items[i].todoItem}</label>
-      <input class="edit-input" type="text">
+      <input class="edit-input" type="text" onfocusout="editItem(${i})">
       <button onclick="editItem(${i})" class="edit-button">&#9998;</button>
       <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
     </li>`;
@@ -62,7 +62,7 @@ if (itemsFromStorage) {
 }
 
 //add items
-let addItems = () => {
+addItems = () => {
   allItems.push({ todoItem: userInput.value, isChecked: false });
   renderItems(allItems, TODO_LIST);
   storeItems();
@@ -147,6 +147,6 @@ checkItem = (index) => {
 };
 
 //store all items
-let storeItems = () => {
+storeItems = () => {
   localStorage.setItem("items", JSON.stringify(allItems));
 };
