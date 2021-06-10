@@ -27,13 +27,13 @@ const todoOutput = document.querySelector("#todo-output");
 const doneOutput = document.querySelector("#done-output");
 const TODO_LIST = "todoList";
 
-let todoItems = [];
+let allItems = [];
 
 //local storage
 const itemsFromStorage = JSON.parse(localStorage.getItem("items"));
 if (itemsFromStorage) {
-  todoItems = itemsFromStorage;
-  renderItems(todoItems, TODO_LIST);
+  allItems = itemsFromStorage;
+  renderItems(allItems, TODO_LIST);
 }
 console.log(itemsFromStorage);
 
@@ -43,7 +43,7 @@ function renderItems(items, tabName) {
     const itemHTML = `
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
-      <label>${items[i].toBuy}</label>
+      <label>${items[i].todoItem}</label>
       <input class="editInput" type="text">
       <button onclick="editItem(${i})" class="editButton">&#9998;</button>
       <button onclick="deleteItem(${i})" class="deleteButton">&#10006;</button>
@@ -59,9 +59,9 @@ function renderItems(items, tabName) {
 
 //add items
 let addItems = () => {
-  todoItems.push({ toBuy: userInput.value, inBasket: false });
-  renderItems(todoItems, TODO_LIST);
-  // storeItems();
+  allItems.push({ todoItem: userInput.value, isChecked: false });
+  renderItems(allItems, TODO_LIST);
+  storeItems();
   userInput.value = "";
 };
 
@@ -72,3 +72,8 @@ userInput.addEventListener("keypress", (event) => {
     addItems();
   }
 });
+
+//store all items
+let storeItems = () => {
+  localStorage.setItem("items", JSON.stringify(allItems));
+}
