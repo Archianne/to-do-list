@@ -41,7 +41,9 @@ function renderItems(items, tabName) {
   todoOutput.innerHTML = "";
   doneOutput.innerHTML = "";
   for (let i = 0; i < items.length; i++) {
-    const itemHTML = `
+   if (!items[i].isChecked && tabName === TODO_LIST) {
+      
+      todoOutput.innerHTML += `
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
       <label>${items[i].todoItem}</label>
@@ -50,10 +52,13 @@ function renderItems(items, tabName) {
       <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
     </li>`;
 
-    if (!items[i].isChecked && tabName === TODO_LIST) {
-      todoOutput.innerHTML += itemHTML;
     } else {
-      doneOutput.innerHTML += itemHTML;
+      doneOutput.innerHTML += `
+      <li data-index="${i}">
+      <input onclick="checkItem(${i})" class="checkbox" type="checkbox" checked>
+      <label>${items[i].todoItem}</label>
+      <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
+    </li>`;
     }
   }
 }
@@ -113,6 +118,25 @@ checkItem = (index) => {
         return {
           ...item,
           isChecked: true,
+        };
+      }
+      return item;
+    });
+
+    storeItems();
+    renderItems(allItems, TODO_LIST);
+    console.log(allItems);
+  }
+
+  if (!checkbox.checked) {
+    let ul = listItem.parentNode;
+    ul.removeChild(listItem);
+
+    allItems = allItems.map((item, itemIndex) => {
+      if (index === itemIndex) {
+        return {
+          ...item,
+          isChecked: false,
         };
       }
       return item;
