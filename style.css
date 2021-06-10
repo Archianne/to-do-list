@@ -1,20 +1,38 @@
-/* Tabs  */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+  background: whitesmoke;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  display: block;
+  width: 400px;
+  margin: 80px auto;
+}
+
+/* tabs */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  height: 65px;
+  height: 100%;
+  margin-top: 10px;
 }
 
 .tab button {
   width: 50%;
-  background-color: inherit;
+  background-color: white;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 15px;
   transition: 0.3s;
+  margin: 0;
 }
 
 .tab button:hover {
@@ -24,7 +42,6 @@
 
 .tab button.active {
   background-color: #ccc;
-  color: #333;
 }
 
 .tab-content {
@@ -42,4 +59,155 @@
   to {
     opacity: 1;
   }
+}
+
+/* heading */
+h3 {
+  font-family: "Lobster", cursive;
+  color: #333;
+  font-weight: 700;
+  font-size: 35px;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-align: center;
+}
+
+/* input and buttons */
+
+input,
+button {
+  outline: none;
+}
+
+#user-input {
+  width: 70%;
+}
+
+#add-button {
+  width: 20%;
+  font-family: "Bebas Neue";
+}
+
+.delete-button,
+.edit-button {
+  width: 30px;
+  height: 30px;
+}
+
+.edit-button {
+  margin-left: 20px;
+}
+
+.edit-button:hover {
+  background-color: teal;
+  color: white;
+}
+
+.edit-button:focus {
+  background-color: teal;
+  color: white;
+}
+
+.delete-button {
+  margin-left: 5px;
+}
+
+.delete-button:hover {
+  background-color: tomato;
+  color: white;
+}
+
+#done-list label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  width: 20px;
+  margin: 10px 0 0;
+  font-family: Lato, sans-serif;
+}
+
+button:hover {
+  color: #333;
+}
+
+
+input {
+  margin: 0;
+  font-size: 15px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  color: #888;
+}
+
+input:focus {
+  color: #333;
+  background: #f9f9f9;
+}
+
+label {
+  display: block;
+  margin: 0 0 20px;
+}
+
+/* UL LI */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li * {
+  float: left;
+}
+
+li {
+    height: 30px;
+}
+
+li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+li > label {
+  font-size: 15px;
+  line-height: 40px;
+  width: 237px;
+  padding: 4px 0 0 10px;
+}
+
+li > input[type="text"] {
+  width: 220px;
+  height: 20px;
+}
+
+ul li input[type="text"] {
+  display: none;
+}
+
+ul li.edit input[type="text"] {
+  display: block;
+}
+
+ul li.edit label {
+  display: none;
 }

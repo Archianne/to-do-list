@@ -9,7 +9,7 @@ function openTab(event, toggleTabs) {
   }
 
   for (let i = 0; i < tabList.length; i++) {
-    tabList[i].className = tabList[i].className.replace(" active");
+    tabList[i].className = tabList[i].className.replace(" active", "");
   }
 
   document.getElementById(toggleTabs).style.display = "block";
@@ -29,6 +29,7 @@ const TODO_LIST = "todoList";
 
 let allItems = [];
 
+//show items
 let renderItems = (items, tabName) => {
   todoOutput.innerHTML = "";
   doneOutput.innerHTML = "";
@@ -44,7 +45,7 @@ let renderItems = (items, tabName) => {
     </li>`;
     } else {
       doneOutput.innerHTML += `
-      <li data-index="${i}">
+      <li id="done-list" data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox" checked>
       <label>${items[i].todoItem}</label>
       <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
