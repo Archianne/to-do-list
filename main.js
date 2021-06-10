@@ -44,9 +44,9 @@ function renderItems(items, tabName) {
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
       <label>${items[i].todoItem}</label>
-      <input class="editInput" type="text">
-      <button onclick="editItem(${i})" class="editButton">&#9998;</button>
-      <button onclick="deleteItem(${i})" class="deleteButton">&#10006;</button>
+      <input class="edit-input" type="text">
+      <button onclick="editItem(${i})" class="edit-button">&#9998;</button>
+      <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
     </li>`;
 
     if (!items[i].isChecked && tabName === TODO_LIST) {
@@ -73,7 +73,34 @@ userInput.addEventListener("keypress", (event) => {
   }
 });
 
+//delete items
+deleteItem = (index) => {
+  let listItem = document.querySelector(`[data-index='${index}']`);
+  let ul = listItem.parentNode;
+
+  allItems.splice(index, 1);
+  ul.removeChild(listItem);
+  storeItems();
+};
+
+//edit items
+editItem = (index) => {
+  let listItem = document.querySelector(`[data-index='${index}']`);
+  let editInput = listItem.querySelector(".edit-input");
+  let label = listItem.querySelector("label");
+  let containsClass = listItem.classList.contains("edit");
+
+  if (containsClass) {
+    label.innerText = editInput.value;
+    allItems.splice(index, 1, { todoItem: editInput.value });
+    storeItems();
+  } else {
+    editInput.value = label.innerText;
+  }
+  listItem.classList.toggle("edit");
+};
+
 //store all items
 let storeItems = () => {
   localStorage.setItem("items", JSON.stringify(allItems));
-}
+};
