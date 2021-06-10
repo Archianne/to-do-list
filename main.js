@@ -39,6 +39,7 @@ console.log(itemsFromStorage);
 
 function renderItems(items, tabName) {
   todoOutput.innerHTML = "";
+  doneOutput.innerHTML = "";
   for (let i = 0; i < items.length; i++) {
     const itemHTML = `
       <li data-index="${i}">
@@ -75,12 +76,9 @@ userInput.addEventListener("keypress", (event) => {
 
 //delete items
 deleteItem = (index) => {
-  let listItem = document.querySelector(`[data-index='${index}']`);
-  let ul = listItem.parentNode;
-
   allItems.splice(index, 1);
-  ul.removeChild(listItem);
   storeItems();
+  renderItems(allItems, TODO_LIST);
 };
 
 //edit items
@@ -92,12 +90,38 @@ editItem = (index) => {
 
   if (containsClass) {
     label.innerText = editInput.value;
-    allItems.splice(index, 1, { todoItem: editInput.value });
+    allItems.splice(index, 1, { todoItem: editInput.value, isChecked: false });
     storeItems();
+    renderItems(allItems, TODO_LIST);
   } else {
     editInput.value = label.innerText;
   }
   listItem.classList.toggle("edit");
+};
+
+//check item
+checkItem = (index) => {
+  let listItem = document.querySelector(`[data-index='${index}']`);
+  let checkbox = listItem.querySelector(".checkbox");
+
+  if (checkbox.checked) {
+    let ul = listItem.parentNode;
+    ul.removeChild(listItem);
+
+    allItems = allItems.map((item, itemIndex) => {
+      if (index === itemIndex) {
+        return {
+          ...item,
+          isChecked: true,
+        };
+      }
+      return item;
+    });
+
+    storeItems();
+    renderItems(allItems, TODO_LIST);
+    console.log(allItems);
+  }
 };
 
 //store all items
