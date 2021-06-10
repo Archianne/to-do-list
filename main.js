@@ -52,7 +52,7 @@ let renderItems = (items, tabName) => {
     </li>`;
     }
   }
-}
+};
 
 //local storage
 const itemsFromStorage = JSON.parse(localStorage.getItem("items"));
