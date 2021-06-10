@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/8a7df27cab.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/8a7df27cab.js"
+      crossorigin="anonymous"
+    ></script>
     <title>To-Do List</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
-        <input type="text" id="user-input">
-        <button id="add-button">Add Item</button>
+      <input type="text" id="user-input" />
+      <button id="add-button">Add Item</button>
 
-        <div class="tab">
-            <button id="default-open" class="tab-list" onclick="openTab(event, 'todoTab')">To-Do</i></button>
-            <button class="tab-list" onclick="openTab(event, 'doneTab')">Done</button>
-            </div>
+      <div class="tab">
+        <button
+          id="default-open"
+          class="tab-list"
+          onclick="openTab(event, 'todoTab')"
+        >
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+        <button class="tab-list" onclick="openTab(event, 'doneTab')">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
+      </div>
 
-            <div id="todoTab" class="tab-content">
-                <h3>To-Do List</h3><hr>
-                <ul id="todo-output"></ul>
-            </div>
+      <div id="todoTab" class="tab-content">
+        <h3>To-Do List</h3>
+        <hr />
+        <ul id="todo-output"></ul>
+      </div>
 
-            <div id="doneTab" class="tab-content">
-                <h3>Done</h3><hr>
-                <ul id="done-output"></ul>
-            </div>          
+      <div id="doneTab" class="tab-content">
+        <h3>Done</h3>
+        <hr />
+        <ul id="done-output"></ul>
+      </div>
     </div>
 
     <script type="text/javascript" src="main.js"></script>
-</body>
-
+  </body>
 </html>

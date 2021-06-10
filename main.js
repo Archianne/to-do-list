@@ -29,20 +29,11 @@ const TODO_LIST = "todoList";
 
 let allItems = [];
 
-//local storage
-const itemsFromStorage = JSON.parse(localStorage.getItem("items"));
-if (itemsFromStorage) {
-  allItems = itemsFromStorage;
-  renderItems(allItems, TODO_LIST);
-}
-console.log(itemsFromStorage);
-
-function renderItems(items, tabName) {
+let renderItems = (items, tabName) => {
   todoOutput.innerHTML = "";
   doneOutput.innerHTML = "";
   for (let i = 0; i < items.length; i++) {
-   if (!items[i].isChecked && tabName === TODO_LIST) {
-      
+    if (!items[i].isChecked && tabName === TODO_LIST) {
       todoOutput.innerHTML += `
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
@@ -51,7 +42,6 @@ function renderItems(items, tabName) {
       <button onclick="editItem(${i})" class="edit-button">&#9998;</button>
       <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
     </li>`;
-
     } else {
       doneOutput.innerHTML += `
       <li data-index="${i}">
@@ -61,6 +51,13 @@ function renderItems(items, tabName) {
     </li>`;
     }
   }
+}
+
+//local storage
+const itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+if (itemsFromStorage) {
+  allItems = itemsFromStorage;
+  renderItems(allItems, TODO_LIST);
 }
 
 //add items
