@@ -40,7 +40,7 @@ renderItems = (items, tabName) => {
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
       <label>${items[i].todoItem}</label>
       <input class="edit-input" type="text" onfocusout="editItem(${i})">
-      <div class="edit-delete">
+      <div>
       <button onclick="editItem(${i})" class="edit-button">&#9998;</button>
       <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
       </div>
@@ -50,7 +50,7 @@ renderItems = (items, tabName) => {
       <li id="done-list" data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox" checked>
       <label>${items[i].todoItem}</label>
-      <button onclick="deleteItem(${i})" class="delete-button" id="delete-button">&#10006;</button>
+      <button onclick="deleteItem(${i})" class="delete-button">&#10006;</button>
     </li>`;
     }
   }
