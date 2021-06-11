@@ -26,6 +26,7 @@ const addButton = document.querySelector("#add-button");
 const todoOutput = document.querySelector("#todo-output");
 const doneOutput = document.querySelector("#done-output");
 const TODO_LIST = "todoList";
+const DONE_LIST = "doneList"
 
 let allItems = [];
 
@@ -125,7 +126,6 @@ checkItem = (index) => {
 
     storeItems();
     renderItems(allItems, TODO_LIST);
-    console.log(allItems);
   }
 
   if (!checkbox.checked) {
@@ -144,8 +144,20 @@ checkItem = (index) => {
 
     storeItems();
     renderItems(allItems, TODO_LIST);
-    console.log(allItems);
   }
+};
+
+//clear list
+clearList = (tabName) => {
+  const isTodoListTab = tabName === TODO_LIST;
+
+  const result = allItems.filter((item) => {
+    return isTodoListTab ? item.isChecked : !item.isChecked;
+  });
+
+  allItems = result;
+  storeItems();
+  renderItems(allItems, TODO_LIST);
 };
 
 //store all items
