@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  height: auto;
+  margin: 10vw 0 0;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+}
+
+.edit-delete {
+  margin-left: -10px;
+}
+
+#user-input {
+  margin-left: 4%;
+  width: 65%;
+}

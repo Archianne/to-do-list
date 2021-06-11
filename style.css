@@ -94,10 +94,6 @@ button {
   height: 30px;
 }
 
-.edit-button {
-  margin-left: 20px;
-}
-
 .edit-button:hover {
   background-color: teal;
   color: white;
@@ -108,14 +104,17 @@ button {
   color: white;
 }
 
-.delete-button {
-  margin-left: 5px;
+#delete-button {
   float: right;
 }
 
 .delete-button:hover {
   background-color: tomato;
   color: white;
+}
+
+.edit-delete {
+  float: right;
 }
 
 #done-list label {
