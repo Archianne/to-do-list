@@ -22,3 +22,8 @@ body {
   margin-left: 4%;
   width: 65%;
 }
+
+.done-tab,
+.todo-tab {
+  border-radius: 0;
+}

@@ -21,18 +21,15 @@
 
   <body>
     <div class="container">
-      <input type="text" id="user-input" />
-      <button id="add-button">Add Item</button>
-
       <div class="tab">
         <button
           id="default-open"
-          class="tab-list"
+          class="tab-list todo-tab"
           onclick="openTab(event, 'todoTab')"
         >
           <i class="fa fa-list" aria-hidden="true"></i>
         </button>
-        <button class="tab-list" onclick="openTab(event, 'doneTab')">
+        <button class="tab-list done-tab" onclick="openTab(event, 'doneTab')">
           <i class="fa fa-check" aria-hidden="true"></i>
         </button>
       </div>
@@ -41,14 +38,22 @@
         <h3>To-Do List</h3>
         <hr />
         <ul id="todo-output"></ul>
-        <button id="clear-todo" onclick="clearList(TODO_LIST)">Clear</button>
+        <button id="clear-todo" onclick="clearList(TODO_LIST)">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
       </div>
 
       <div id="doneTab" class="tab-content">
         <h3>Done</h3>
         <hr />
         <ul id="done-output"></ul>
-        <button id="clear-done" onclick="clearList(DONE_LIST)">Clear</button>
+        <button id="clear-done" onclick="clearList(DONE_LIST)">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="add">
+        <input type="text" id="user-input" />
+        <button id="add-button">Add Item</button>
       </div>
     </div>
 

@@ -3,7 +3,7 @@ const tabContent = document.getElementsByClassName("tab-content");
 const tabList = document.getElementsByClassName("tab-list");
 const defaultOpen = document.querySelector("#default-open");
 
-function openTab(event, toggleTabs) {
+openTab = (event, toggleTabs) => {
   for (let i = 0; i < tabContent.length; i++) {
     tabContent[i].style.display = "none";
   }
@@ -14,7 +14,7 @@ function openTab(event, toggleTabs) {
 
   document.getElementById(toggleTabs).style.display = "block";
   event.currentTarget.className += " active";
-}
+};
 
 defaultOpen.click();
 
@@ -26,16 +26,16 @@ const addButton = document.querySelector("#add-button");
 const todoOutput = document.querySelector("#todo-output");
 const doneOutput = document.querySelector("#done-output");
 const TODO_LIST = "todoList";
-const DONE_LIST = "doneList"
+const DONE_LIST = "doneList";
 
 let allItems = [];
 
 //show items
-renderItems = (items, tabName) => {
+renderItems = (items) => {
   todoOutput.innerHTML = "";
   doneOutput.innerHTML = "";
   for (let i = 0; i < items.length; i++) {
-    if (!items[i].isChecked && tabName === TODO_LIST) {
+    if (!items[i].isChecked) {
       todoOutput.innerHTML += `
       <li data-index="${i}">
       <input onclick="checkItem(${i})" class="checkbox" type="checkbox">
@@ -61,13 +61,13 @@ renderItems = (items, tabName) => {
 const itemsFromStorage = JSON.parse(localStorage.getItem("items"));
 if (itemsFromStorage) {
   allItems = itemsFromStorage;
-  renderItems(allItems, TODO_LIST);
+  renderItems(allItems);
 }
 
 //add items
 addItems = () => {
   allItems.push({ todoItem: userInput.value, isChecked: false });
-  renderItems(allItems, TODO_LIST);
+  renderItems(allItems);
   storeItems();
   userInput.value = "";
 };
@@ -84,7 +84,7 @@ userInput.addEventListener("keypress", (event) => {
 deleteItem = (index) => {
   allItems.splice(index, 1);
   storeItems();
-  renderItems(allItems, TODO_LIST);
+  renderItems(allItems);
 };
 
 //edit items
@@ -98,7 +98,7 @@ editItem = (index) => {
     label.innerText = editInput.value;
     allItems.splice(index, 1, { todoItem: editInput.value, isChecked: false });
     storeItems();
-    renderItems(allItems, TODO_LIST);
+    renderItems(allItems);
   } else {
     editInput.value = label.innerText;
   }
@@ -125,7 +125,7 @@ checkItem = (index) => {
     });
 
     storeItems();
-    renderItems(allItems, TODO_LIST);
+    renderItems(allItems);
   }
 
   if (!checkbox.checked) {
@@ -143,7 +143,7 @@ checkItem = (index) => {
     });
 
     storeItems();
-    renderItems(allItems, TODO_LIST);
+    renderItems(allItems);
   }
 };
 
@@ -157,7 +157,7 @@ clearList = (tabName) => {
 
   allItems = result;
   storeItems();
-  renderItems(allItems, TODO_LIST);
+  renderItems(allItems);
 };
 
 //store all items

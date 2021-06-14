@@ -2,23 +2,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
+:root {
+  --accent1: #f89e9d;
+  --accent2: #6490d2;
+  --accent3: #f8f4eb;
+  --accent4: #333;
+}
+
 body {
-  background: whitesmoke;
-  color: #333;
+  background: #ff6347;
+  color: var(--accent4);
   font-family: "Poppins", sans-serif;
 }
 
 .container {
   display: block;
+  background-color: whitesmoke;
   width: 400px;
   margin: 80px auto;
+  border-radius: 20px;
 }
 
 /* tabs */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
   height: 100%;
   margin-top: 10px;
 }
@@ -35,20 +42,28 @@ body {
   margin: 0;
 }
 
+.done-tab {
+  border-radius: 0 20px 0 0;
+}
+
+.todo-tab {
+  border-radius: 20px 0 0 0;
+}
+
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #fdd8d7;
   color: #333;
 }
 
 .tab button.active {
-  background-color: #ccc;
+  background-color: var(--accent2);
+  color: white;
 }
 
 .tab-content {
   display: none;
   animation: fadeEffect 1s;
   padding: 5px 12px 30px 12px;
-  border: 1px solid #ccc;
   border-top: none;
 }
 
@@ -88,6 +103,10 @@ button {
   font-family: "Bebas Neue";
 }
 
+#add {
+  padding: 20px;
+}
+
 .delete-button,
 .edit-button {
   width: 30px;
@@ -112,6 +131,13 @@ button {
 #done-list label {
   text-decoration: line-through;
   color: #888;
+}
+
+#clear-done,
+#clear-todo {
+  width: 100%;
+  color: red;
+  margin-top: 10px;
 }
 
 button {
