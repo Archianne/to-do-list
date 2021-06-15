@@ -3,14 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-  --accent1: #f89e9d;
+  --accent1: #ffc9bf;
   --accent2: #6490d2;
   --accent3: #f8f4eb;
   --accent4: #333;
 }
 
 body {
-  background: #ff6347;
+  background: var(--accent1);
   color: var(--accent4);
   font-family: "Poppins", sans-serif;
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .tab button:hover {
-  background-color: #fdd8d7;
+  background-color: #b4cef5;
   color: #333;
 }
 
@@ -105,6 +105,8 @@ button {
 
 #add {
   padding: 20px;
+  border-top: 20px solid var(--accent1);
+  margin-top: -20px;
 }
 
 .delete-button,

@@ -14,6 +14,11 @@ openTab = (event, toggleTabs) => {
 
   document.getElementById(toggleTabs).style.display = "block";
   event.currentTarget.className += " active";
+
+  if (document.querySelector(".done-tab")) {
+    console.log('fff')
+  }
+  
 };
 
 defaultOpen.click();
